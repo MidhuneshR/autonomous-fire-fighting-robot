@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="images/banner.png" alt="Autonomous Fire Fighting Robot Banner" width="100%">
-</p>
-
 <h1 align="center">🔥 Autonomous Fire Fighting Robot 🔥</h1>
 
 <p align="center">
@@ -41,10 +37,15 @@
 6. [Software & Technologies](#-software--technologies)
 7. [Working Principle](#-working-principle)
 8. [Project Results & Output](#-project-results--output)
-9. [Folder Structure](#-folder-structure)
-10. [Setup & Installation](#-setup--installation)
-11. [Project Team & Acknowledgements](#-project-team--acknowledgements)
-12. [License](#-license)
+9. [Block Diagram](#block-diagram)
+10. [Circuit Diagram](#circuit-diagram)
+11. [Hardware Setup](#hardware-setup)
+12. [Robot Initialization](#robot-initialization)
+13. [Fire Detection](#fire-detection)
+14. [Folder Structure](#-folder-structure)
+15. [Setup & Installation](#-setup--installation)
+16. [Project Team & Acknowledgements](#-project-team--acknowledgements)
+17. [License](#-license)
 
 ---
 
@@ -144,25 +145,50 @@ graph TD
 <summary>🔍 Detailed Component Breakdown & Datasheeting</summary>
 
 #### Arduino Uno R3
+<p align="left">
+  <img src="images/arduino-uno.jpg" alt="Arduino Uno R3" width="250">
+</p>
+
 *   **Operating Voltage**: 5V (USB or 2.1mm DC barrel jack input)
 *   **Input Voltage limits**: 6-20V (Recommended 7-12V)
 *   **Digital I/O Pins**: 14 (6 provide PWM output for motor speeds and servo control)
 *   **Analog Input Pins**: 6 (A0, A1, A2 used for flame sensor inputs)
 
 #### L293D Motor Driver
+<p align="left">
+  <img src="images/motor-driver.jpg" alt="L293D Motor Driver" width="250">
+</p>
+
 *   **Configuration**: Dual H-Bridge (controls 2 DC motors independently in both directions)
 *   **Clamping Diodes**: Integrated internal diodes protect logic pins from motor back-EMF spikes.
 *   **Thermal Protection**: Automatic thermal shutdown prevents damage from overcurrent or stalls.
 
 #### SG90 Micro Servo
+<p align="left">
+  <img src="images/servo-motor.jpg" alt="SG90 Micro Servo" width="250">
+</p>
+
 *   **Operating Voltage**: 4.8V to 6.0V
 *   **Rotation Angle**: 180° total travel range
 *   **Weight**: 9.0 grams (compact format suitable for light nozzle mounts)
+
+#### IR Flame Sensor Module
+<p align="left">
+  <img src="images/flame-sensor.jpg" alt="IR Flame Sensor Module" width="250">
+</p>
+
+*   **Spectrum Range**: 760nm to 1100nm
+*   **Detection Angle**: About 60 degrees
+*   **Comparator Chip**: LM393 for stable clean digital outputs
 </details>
 
 ---
 
 ## 💻 Software & Technologies
+
+<p align="left">
+  <img src="images/arduino-ide.jpg" alt="Arduino IDE Interface" width="300">
+</p>
 
 *   **Programming Language**: C / C++ (Embedded Arduino Dialect)
 *   **Development IDE**: Arduino IDE (for compilation, bootloading, and hex generation)
@@ -217,17 +243,25 @@ The robot's firmware operates as an autonomous state machine running inside a co
 *   **Obstacle Avoidance**: Successfully detects and avoids obstacles (walls, legs) when moving toward fire.
 *   **Suppression Performance**: Completely extinguishes small flames (candle/lighter scale) in under 5 seconds of active spraying.
 
-### Expected State Outputs
-<p align="center">
-  <img src="images/output1.jpg" alt="State 1: Robot Detecting Fire" width="31%">
-  <img src="images/output2.jpg" alt="State 2: Robot Moving Toward Fire" width="31%">
-  <img src="images/output3.jpg" alt="State 3: Water Pump Sweeping & Extinguishing" width="31%">
-</p>
-<p align="center">
-  <em><strong>Left</strong>: State 1 – Robot scans 360° and detects flame. <br>
-  <strong>Center</strong>: State 2 – Robot steers and moves towards the target flame. <br>
-  <strong>Right</strong>: State 3 – Robot stops at 15cm, activates pump, and sweeps nozzle to extinguish.</em>
-</p>
+## Block Diagram
+
+![Block Diagram](images/block-diagram.png)
+
+## Circuit Diagram
+
+![Circuit Diagram](images/circuit-diagram.png)
+
+## Hardware Setup
+
+![Hardware Setup](images/hardware-setup.jpg)
+
+## Robot Initialization
+
+![Robot Initialization](images/robot-initialization.jpg)
+
+## Fire Detection
+
+![Fire Detection](images/fire-detection.jpg)
 
 ---
 
@@ -241,15 +275,18 @@ Fire-Fighting-Robot/
 ├── .gitignore             # Ignored compilation files
 │
 ├── images/                # Diagrams, screenshots, and visual assets
-│   ├── banner.png
 │   ├── block-diagram.png
 │   ├── circuit-diagram.png
-│   ├── hardware.jpg
-│   ├── robot.jpg
-│   ├── working.gif
-│   ├── output1.jpg
-│   ├── output2.jpg
-│   └── output3.jpg
+│   ├── system-architecture.png
+│   ├── hardware-setup.jpg
+│   ├── robot-prototype.jpg
+│   ├── robot-initialization.jpg
+│   ├── fire-detection.jpg
+│   ├── arduino-uno.jpg
+│   ├── flame-sensor.jpg
+│   ├── motor-driver.jpg
+│   ├── servo-motor.jpg
+│   └── arduino-ide.jpg
 │
 ├── docs/                  # Project reports, slide decks, and papers
 │   ├── Project_Report.pdf
